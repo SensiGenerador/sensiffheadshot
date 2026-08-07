@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SensiHeadshot | Generador de Sensibilidad</title>
+    <title>SENSIHEADSHOT | GENERADOR DE SENSIBILIDAD</title>
     <style>
         * { box-sizing: border-box; }
         body { 
@@ -14,6 +14,50 @@
             padding: 20px;
             margin: 0;
         }
+
+        /* PANTALLA DE CARGA CON ESTILO SHINOBI */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0d0d11;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        #loader h2 {
+            color: #ff4500;
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+        #loader p {
+            color: #ff8c00;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .spinner {
+            border: 5px solid #222;
+            border-top: 5px solid #ff4500;
+            border-right: 5px solid #ff8c00;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* CONTENIDO PRINCIPAL */
         .container { 
             max-width: 450px; 
             margin: 0 auto; 
@@ -23,10 +67,10 @@
             box-shadow: 0 0 20px rgba(255, 69, 0, 0.3);
             border: 1px solid #ff4500;
         }
-        h1 { color: #ff4500; margin-bottom: 5px; }
-        p { color: #aaa; font-size: 14px; }
+        h1 { color: #ff4500; margin-bottom: 5px; text-transform: uppercase; }
+        p { color: #aaa; font-size: 14px; text-transform: uppercase; }
         
-        label { display: block; text-align: left; margin: 12px 0 5px; font-weight: bold; color: #ff8c00; }
+        label { display: block; text-align: left; margin: 12px 0 5px; font-weight: bold; color: #ff8c00; text-transform: uppercase; }
         select { 
             width: 100%; 
             padding: 12px; 
@@ -36,6 +80,7 @@
             color: #fff; 
             font-size: 16px;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
         
         .btn-generar { 
@@ -50,6 +95,7 @@
             cursor: pointer; 
             margin-top: 15px;
             transition: 0.3s;
+            text-transform: uppercase;
         }
         .btn-generar:hover { opacity: 0.9; transform: scale(1.02); }
         
@@ -68,6 +114,7 @@
             border-bottom: 1px solid #222; 
             display: flex; 
             justify-content: space-between; 
+            text-transform: uppercase;
         }
         .val { color: #00ffcc; font-weight: bold; }
 
@@ -82,91 +129,127 @@
             color: white;
             font-weight: bold;
             font-size: 14px;
+            text-transform: uppercase;
         }
         .yt { background: #ff0000; }
-        .bot { background: #5865F2; } /* O color verde de WhatsApp / Telegram según sea tu bot */
+        .bot { background: #5865F2; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>🎯 SensiHeadshot</h1>
-        <p>Genera la sensibilidad perfecta para dar todo rojo en Free Fire</p>
+    <!-- PANTALLA DE CARGA -->
+    <div id="loader">
+        <div class="spinner"></div>
+        <h2>CARGANDO SENSIHEADSHOT...</h2>
+        <p>SHISUI X NARUTO - MODO TODO ROJO</p>
+    </div>
 
-        <!-- Selección de Dispositivo -->
-        <label for="dispositivo">Marca/Modelo de Dispositivo:</label>
+    <!-- CONTENIDO DE LA PÁGINA -->
+    <div class="container">
+        <h1>🎯 SENSIHEADSHOT</h1>
+        <p>GENERA LA SENSIBILIDAD PERFECTA PARA DAR TODO ROJO EN FREE FIRE</p>
+
+        <!-- SELECCIÓN DE DISPOSITIVO -->
+        <label for="dispositivo">MARCA/MODELO DE DISPOSITIVO:</label>
         <select id="dispositivo">
-            <option value="redmi">Redmi / Xiaomi</option>
-            <option value="samsung">Samsung</option>
-            <option value="motorola">Motorola</option>
-            <option value="iphone">iPhone / iOS</option>
-            <option value="otros">Otros Android / PC</option>
+            <option value="zte_a36">ZTE BLADE A36</option>
+            <option value="zte_otros">ZTE (OTROS MODELOS)</option>
+            <option value="redmi">REDMI / XIAOMI</option>
+            <option value="samsung">SAMSUNG</option>
+            <option value="motorola">MOTOROLA</option>
+            <option value="iphone">IPHONE / IOS</option>
+            <option value="huawei">HUAWEI / HONOR</option>
+            <option value="infinix">INFINIX / TECNO</option>
+            <option value="otros">OTROS ANDROID / PC</option>
         </select>
 
-        <!-- Selección de DPI -->
-        <label for="dpi">Configuración de DPI:</label>
+        <!-- SELECCIÓN DE DPI -->
+        <label for="dpi">CONFIGURACIÓN DE DPI:</label>
         <select id="dpi">
-            <option value="nodpi">Sin DPI (Fábrica)</option>
-            <option value="sidpi">Con DPI Modificado</option>
+            <option value="nodpi">SIN DPI (FÁBRICA)</option>
+            <option value="sidpi">CON DPI MODIFICADO</option>
         </select>
 
         <button class="btn-generar" onclick="generarSensi()">CALCULAR SENSIBILIDAD</button>
 
-        <!-- Resultados -->
+        <!-- RESULTADOS -->
         <div id="resultado" class="resultado">
-            <h3 style="color: #00ffcc; text-align:center; margin-top:0;">Configuración Calibrada:</h3>
+            <h3 style="color: #00ffcc; text-align:center; margin-top:0; text-transform: uppercase;">CONFIGURACIÓN CALIBRADA:</h3>
             <ul>
-                <li>General: <span class="val" id="gen">0%</span></li>
-                <li>Punto Rojo: <span class="val" id="red">0%</span></li>
-                <li>Mira 2x: <span class="val" id="m2x">0%</span></li>
-                <li>Mira 4x: <span class="val" id="m4x">0%</span></li>
-                <li>Francotirador: <span class="val" id="awm">0%</span></li>
-                <li>Cámara: <span class="val" id="cam">0%</span></li>
-                <li>Botón de Disparo: <span class="val" id="boton">0%</span></li>
-                <li id="dpi-val" style="display:none;">DPI Recomendado: <span class="val" id="num-dpi">---</span></li>
+                <li>GENERAL: <span class="val" id="gen">0%</span></li>
+                <li>PUNTO ROJO: <span class="val" id="red">0%</span></li>
+                <li>MIRA 2X: <span class="val" id="m2x">0%</span></li>
+                <li>MIRA 4X: <span class="val" id="m4x">0%</span></li>
+                <li>FRANCOTIRADOR: <span class="val" id="awm">0%</span></li>
+                <li>CÁMARA: <span class="val" id="cam">0%</span></li>
+                <li>BOTÓN DE DISPARO: <span class="val" id="boton">0%</span></li>
+                <li id="dpi-val" style="display:none;">DPI RECOMENDADO: <span class="val" id="num-dpi">---</span></li>
             </ul>
         </div>
 
-        <!-- Botones a Redes / Canal / Bot -->
+        <!-- BOTONES A CANAL Y BOT -->
         <div class="redes">
-            <a href="https://www.youtube.com/@rey_fanstamista" target="_blank" class="btn-social yt">
-                ▶ Visitar Canal de YouTube (rey_fanstamista)
+            <a href="https://www.youtube.com/@REY_FANSTAMISTA" target="_blank" class="btn-social yt">
+                ▶ VISITAR CANAL DE YOUTUBE (REY_FANSTAMISTA)
             </a>
             <a href="#" target="_blank" class="btn-social bot" id="link-bot">
-                🤖 Usar Bot de YouTube / Comandos
+                🤖 USAR BOT DE YOUTUBE / COMANDOS
             </a>
         </div>
     </div>
 
     <script>
+        // SCRIPT PANTALLA DE CARGA
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
+
+        // SCRIPT GENERADOR DE SENSIBILIDAD
         function generarSensi() {
             const disp = document.getElementById("dispositivo").value;
             const usaDpi = document.getElementById("dpi").value;
             
             let gen, red, m2x, m4x, awm, cam, boton, valorDpi;
 
-            // Algoritmo para calibrar según la combinación elegida
             if (usaDpi === "nodpi") {
                 document.getElementById("dpi-val").style.display = "none";
                 
-                if (disp === "redmi") {
+                if (disp === "zte_a36") {
+                    gen = "99%"; red = "96%"; m2x = "93%"; m4x = "90%"; awm = "48%"; cam = "100%"; boton = "46%";
+                } else if (disp === "zte_otros") {
+                    gen = "97%"; red = "94%"; m2x = "91%"; m4x = "88%"; awm = "50%"; cam = "100%"; boton = "48%";
+                } else if (disp === "redmi") {
                     gen = "98%"; red = "95%"; m2x = "92%"; m4x = "89%"; awm = "50%"; cam = "100%"; boton = "48%";
                 } else if (disp === "samsung") {
                     gen = "100%"; red = "98%"; m2x = "95%"; m4x = "92%"; awm = "45%"; cam = "100%"; boton = "52%";
                 } else if (disp === "iphone") {
                     gen = "90%"; red = "85%"; m2x = "80%"; m4x = "78%"; awm = "40%"; cam = "90%"; boton = "42%";
+                } else if (disp === "infinix") {
+                    gen = "97%"; red = "93%"; m2x = "90%"; m4x = "87%"; awm = "45%"; cam = "100%"; boton = "50%";
                 } else {
                     gen = "96%"; red = "93%"; m2x = "90%"; m4x = "87%"; awm = "50%"; cam = "100%"; boton = "50%";
                 }
             } else {
                 document.getElementById("dpi-val").style.display = "flex";
                 
-                if (disp === "redmi") {
+                if (disp === "zte_a36") {
+                    gen = "95%"; red = "91%"; m2x = "89%"; m4x = "86%"; awm = "42%"; cam = "95%"; boton = "44%"; valorDpi = "560";
+                } else if (disp === "zte_otros") {
+                    gen = "94%"; red = "90%"; m2x = "88%"; m4x = "85%"; awm = "45%"; cam = "95%"; boton = "46%"; valorDpi = "570";
+                } else if (disp === "redmi") {
                     gen = "94%"; red = "90%"; m2x = "88%"; m4x = "85%"; awm = "45%"; cam = "95%"; boton = "45%"; valorDpi = "580";
                 } else if (disp === "samsung") {
                     gen = "96%"; red = "92%"; m2x = "89%"; m4x = "86%"; awm = "40%"; cam = "90%"; boton = "50%"; valorDpi = "600";
                 } else if (disp === "iphone") {
-                    gen = "88%"; red = "82%"; m2x = "78%"; m4x = "75%"; awm = "35%"; cam = "85%"; boton = "40%"; valorDpi = "120 (Vel. Marcación)";
+                    gen = "88%"; red = "82%"; m2x = "78%"; m4x = "75%"; awm = "35%"; cam = "85%"; boton = "40%"; valorDpi = "120 (VEL. MARCACIÓN)";
+                } else if (disp === "infinix") {
+                    gen = "93%"; red = "89%"; m2x = "86%"; m4x = "83%"; awm = "40%"; cam = "90%"; boton = "48%"; valorDpi = "540";
                 } else {
                     gen = "95%"; red = "91%"; m2x = "87%"; m4x = "84%"; awm = "48%"; cam = "95%"; boton = "48%"; valorDpi = "550";
                 }
@@ -174,7 +257,6 @@
                 document.getElementById("num-dpi").innerText = valorDpi;
             }
 
-            // Mostrar resultados en pantalla
             document.getElementById("gen").innerText = gen;
             document.getElementById("red").innerText = red;
             document.getElementById("m2x").innerText = m2x;
